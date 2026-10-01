@@ -31,8 +31,24 @@ function AddRow(element){
 
 
 function NewRow(){
-    name = document.getElementById("drinkName").value
-    price = document.getElementById("drinkPrice").value
+    let name = document.getElementById("drinkName").value
+    /** @type Number */
+    let price = document.getElementById("drinkPrice").value
+    if (name.trim().length == 0) {
+        document.getElementById("alertName").innerHTML  = "This field must not be blank!"
+        return
+    }
+    else{
+         document.getElementById("alertName").innerHTML  = ""
+    }
+    if (price%10 != 0) {
+        document.getElementById("alertNumber").innerHTML  = "The price has to be able to be divided by 10!"
+        return
+    }
+     else{
+         document.getElementById("alertNumber").innerHTML  = ""
+    }
+    
     const element = {
         name:name,
         price:price
@@ -43,8 +59,4 @@ function NewRow(){
     /** @type HTMLFormElement */
     const form = document.getElementById("form")
     form.reset()
-
-    //document.getElementById("drinkName").value = ""
-    //document.getElementById("drinkPrice").value = ""
-    
 }
